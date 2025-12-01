@@ -2,7 +2,8 @@ import re
 from playwright.sync_api import Page, expect
 
 def test_demoqa_home(page: Page):
-    page.goto("https://demoqa.com")
+    page.goto("https://demoqa.com")    
+    page.wait_for_load_state("networkidle")
 
     # Checking visibility of Text Box elements
     page.locator("div").filter(has_text=re.compile(r"^Elements$")).nth(1).click()

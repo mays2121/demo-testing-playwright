@@ -3,6 +3,7 @@ from playwright.sync_api import Page, expect
 
 def test_demoqa_home(page: Page):
     page.goto("https://demoqa.com")
+    page.wait_for_load_state("networkidle")
     page.locator("path").first.click()
     page.get_by_text("Check Box").click()
     page.get_by_role("button", name="Expand all").click()

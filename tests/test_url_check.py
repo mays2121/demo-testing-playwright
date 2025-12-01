@@ -1,7 +1,8 @@
 from playwright.sync_api import Page, expect
 
 def test_demoqa_home(page: Page):
-    page.goto("https://demoqa.com")
+    page.goto("https://demoqa.com")    
+    page.wait_for_load_state("networkidle")
 
     # Verify page title
     expect(page).to_have_title("DEMOQA")
