@@ -1,6 +1,6 @@
-from playwright.sync_api import Page, expect
+from playwright.sync_api import expect
 
-def test_demoqa_home(page: Page):
+def test_demoqa_home(page):
     page.goto("https://demoqa.com")    
     page.wait_for_load_state("networkidle")
     page.wait_for_timeout(2000)
