@@ -3,6 +3,7 @@ from playwright.sync_api import Page, expect
 def test_demoqa_home(page: Page):
     page.goto("https://demoqa.com")    
     page.wait_for_load_state("networkidle")
+    page.wait_for_timeout(2000)
 
     # Verify page title
     expect(page).to_have_title("DEMOQA")
