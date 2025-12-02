@@ -1,6 +1,7 @@
 import re
 from playwright.sync_api import Page, expect
 
+
 def test_text_box(page: Page):
     page.goto("https://demoqa.com")
     page.wait_for_timeout(2000)
@@ -17,7 +18,7 @@ def test_text_box(page: Page):
     expect(page.get_by_role("textbox", name="Current Address")).to_be_visible()
     expect(page.locator("#permanentAddress")).to_be_visible()
     expect(page.get_by_role("button", name="Submit")).to_be_visible()
-    
+
     # Filling the Text Box form and submitting
     page.get_by_role("textbox", name="Full Name").fill("Tester")
     page.get_by_role("textbox", name="name@example.com").fill("end_2_end@dummy.com")
@@ -27,4 +28,6 @@ def test_text_box(page: Page):
     expect(page.locator("#name")).to_contain_text("Name:Tester")
     expect(page.locator("#email")).to_contain_text("Email:end_2_end@dummy.com")
     expect(page.locator("#output")).to_contain_text("Current Address :Munich, Germany")
-    expect(page.locator("#output")).to_contain_text("Permananet Address :Munich, Germany")
+    expect(page.locator("#output")).to_contain_text(
+        "Permananet Address :Munich, Germany"
+    )
