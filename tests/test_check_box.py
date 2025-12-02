@@ -1,10 +1,10 @@
 import re
 from playwright.sync_api import Page, expect
 
-def test_check_home(page: Page):
+def test_check_box(page: Page):
     page.goto("https://demoqa.com")
     page.wait_for_timeout(2000)
-    page.locator("path").first.click()
+    page.locator("div").filter(has_text=re.compile(r"^Elements$")).nth(1).click()
     page.get_by_text("Check Box").click()
     page.get_by_role("button", name="Expand all").click()
     page.get_by_text("React").click()
